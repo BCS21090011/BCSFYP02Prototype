@@ -956,9 +956,20 @@
 
                     return interfaceRunning;
                 }
+                
+                CloseAllInterface ()
+                {
+                    this.game.scene.getScenes(true).forEach(runningScene => {
+                        if (runningScene.SceneType === "GameInterface")
+                        {
+                            this.ToggleInterface(runningScene.Key, false);
+                        }
+                    });
+                }
 
                 ExitGame ()
                 {
+                    this.CloseAllInterface();
                     GameScene.GameTimer.PauseTimer();
                     this.PlaySound("BGM", false);
                     GameScene.LastScene = this.Key;
