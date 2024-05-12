@@ -1335,11 +1335,13 @@ class Endpage extends GameScene
             wordWrap: { width: gameViewWidth * 0.8 }
         }).setOrigin(0.5);
 
+        /*
         // Share:
         this.add.text(gameViewCenterX, gameViewHeight * 0.7, "Share your experience on social media!", {
             font: "16px Roboto",
             fill: "#ffffff"
         }).setOrigin(0.5);
+        */
 
         // Restart game button background:
         let restartBtnBG = this.add.graphics();
@@ -1694,7 +1696,7 @@ class MainDoor extends GameScene
                     GameScene.MainDoorOpened = true;
                     this.BG.BGElement.setTexture("OpenedMainDoor");
                     this.PlaySound("Cheer");
-                    this.ToggleTextInterface("", ["I have successfully open the door."]);
+                    this.ToggleTextInterface("", ["Yeah! I have successfully open the door."]);
                 }
             }
         });
