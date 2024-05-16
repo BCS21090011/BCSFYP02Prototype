@@ -2000,13 +2000,14 @@ class PestleAndMortarScene extends GameScene
         this.SetBackground("PestleAndMortarSceneBG", "../../assets/Game/PNM.jpeg");
     }
     
-    Create ()
+    async Create ()
     {
         this.SetDownArrow(() => this.GotoScene("GallPos1Dir2"), "Move away from pestle and mortar");
 
         if (GameScene.IsInventoryHasItem("RiceJarWithGrains") === true)
         {
             GameScene.RemoveItemFromInventory("RiceJarWithGrains");
+            await this.ToggleTextInterface("", ["Congrats! You have succesfully turned the grain into rice using pestle and mortar."]);
             this.ToggleItemCollectedInterface("RiceJarWithRice");
             GameScene.AddItemToInventory("RiceJarWithRice");
             this.PlaySound("Bing");
@@ -2087,7 +2088,7 @@ class TVScene1 extends GameScene
 
     Create ()
     {
-        this.ToggleTextInterface("Channel 1", ["Shirt\nThe sequence of the clothes might be important, it seems related to the piano,\nhow can I know the colour of each clothes?"]);
+        this.ToggleTextInterface("Channel 1", ["Shirt\nThe sequence of the clothes might be important, it seems related to the piano,\nbut this is a black and white TV,\nhow can I know the colour of each clothes?"]);
         this.SetLeftArrow(() => this.GotoScene("TVScene3", false), "Channel 3");
         this.SetRightArrow(() => this.GotoScene("TVScene2", false), "Channel 2");
         this.SetDownArrow(() => this.GotoScene("TVScene", false), "Close the TV");
@@ -2105,7 +2106,7 @@ class TVScene2 extends GameScene
 
     Create ()
     {
-        this.ToggleTextInterface("Channel 2", ["Gown\nThe sequence of the clothes might be important, it seems related to the piano,\nhow can I know the colour of each clothes?"]);
+        this.ToggleTextInterface("Channel 2", ["Gown\nThe sequence of the clothes might be important, it seems related to the piano,\nbut this is a black and white TV,\nhow can I know the colour of each clothes?"]);
         this.SetLeftArrow(() => this.GotoScene("TVScene1", false), "Channel 1");
         this.SetRightArrow(() => this.GotoScene("TVScene3", false), "Channel 3");
         this.SetDownArrow(() => this.GotoScene("TVScene", false), "Close the TV");
@@ -2123,7 +2124,7 @@ class TVScene3 extends GameScene
 
     Create ()
     {
-        this.ToggleTextInterface("Channel 3", ["Chinese Hat\nThe sequence of the clothes might be important, it seems related to the piano,\nhow can I know the colour of each clothes?"]);
+        this.ToggleTextInterface("Channel 3", ["Chinese Hat\nThe sequence of the clothes might be important, it seems related to the piano,\nbut this is a black and white TV,\nhow can I know the colour of each clothes?"]);
         this.SetLeftArrow(() => this.GotoScene("TVScene2", false), "Channel 2");
         this.SetRightArrow(() => this.GotoScene("TVScene1", false), "Channel 1");
         this.SetDownArrow(() => this.GotoScene("TVScene", false), "Close the TV");
@@ -2213,7 +2214,7 @@ class PianoScene extends GameScene
         // this.AreaGetter();
 
         this.SetDownArrow(() => this.GotoScene("GallPos2Dir1"), "Move away from piano");
-        this.ToggleTextInterface("", ["It seems that you need to press these keys with colour labels in correct order.\nWhat order should be pressed?"]);
+        this.ToggleTextInterface("", ["It seems that you need to press the keys with colour labels in a certain order.\nBut hmm... what is the correct colour order?"]);
 
         this.Arr = [];
         this.CreateInteractableItem("BluePianoKey", 76, 320, 105, 560, () => {
@@ -2521,7 +2522,7 @@ class InstructionInterface extends GameInterface
                         this.Speak("Hints", "Press this icon or [I] to open this again.", () => {
                             this.ClearDynamicArea();
                             this.AddSideImg("WNS");
-                            this.Speak("Hints", "You may want to click on the items to interact with them.\nYou may pick them into the inventory by clicking them.", () => {
+                            this.Speak("Hints", "You may want to click on the items in this gallery to interact with them.\nYou may pick them into the inventory by clicking them.", () => {
                                 this.ClearDynamicArea();
                                 this.ToggleInstructionInterface(false);
                             });
