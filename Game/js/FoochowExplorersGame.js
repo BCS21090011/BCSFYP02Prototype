@@ -2393,7 +2393,7 @@ class QuizInterface extends GameInterface
                         Value: false
                     },
                     {
-                        Option: "Video shoting",
+                        Option: "Video shooting",
                         Value: false
                     },
                     {
